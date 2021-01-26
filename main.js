@@ -43,13 +43,27 @@ event.preventDefault()
 
   // clear input value
   todoInput.value = '';
-
 }
 
-function deleteCheck() {
+function deleteCheck(e) {
 
     const item = e.target;
-    
 
+    //delete todo
+    if (item.classList[0] === 'trash-btn') {
+      const todo = item.parentElement;
+      //animation
+      todo.classList.add('fall');
+      todo.addEventListener('transitionend', function(){
+        todo.remove();
+      });
+      
+    }
+
+    //check todo
+    if (item.classList[0] === 'complete-btn') {
+      const todo = item.parentElement;
+      todo.classList.toggle('completed');
+    }
     
 }
